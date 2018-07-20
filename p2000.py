@@ -457,6 +457,7 @@ if __name__ == "__main__":
             cmd = dir_path + "/./debugtest"
             print("Debug process", cmd)
         
+        msg = None
         multimon_ng = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
         try:
             while True:
@@ -493,6 +494,9 @@ if __name__ == "__main__":
                             pr = PRIORITY1
 
                         # print("MSG", groupid, capcode, message)
+                        
+                        if (msg and msg.body != message):
+                            # than update
                         
                         # Get name from capcode, if exist
                         receiver_name = "{} ({})".format(capcodesDict[capcode], capcode) if capcode in capcodesDict else capcode
